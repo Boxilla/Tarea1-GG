@@ -1,9 +1,25 @@
 package database
 
 import (
-	"github.com/JanoBotso/gorust-goserver"
+	"github.com/JanoBotso/Tarea1-GG"
 	"errors"
 )
+
+type Database struct {
+	ciudades		map[string]*grb.Ciudad
+	conecciones     map[string]*grb.Coneccion
+}
+
+
+func New() *Database {
+	return &Database{
+		ciudades:   make(map[string]*grb.Ciudad),
+		conecciones: make(map[string]*grb.Coneccion),
+	}
+}
+
+/*
+
 
 type Database struct {
 	entries map[string]*grb.Entry
@@ -38,3 +54,5 @@ func (db *Database) EntryGet(key string) (*grb.Entry, error) {
 	}
 	return value, nil
 }
+
+*/
