@@ -7,17 +7,46 @@ import (
 
 type Database struct {
 	ciudades		map[string]*grb.Ciudad
-	conecciones     map[string]*grb.Coneccion
+	conexiones     map[string]*grb.Conexion
 }
 
 
 func New() *Database {
 	return &Database{
 		ciudades:   make(map[string]*grb.Ciudad),
-		conecciones: make(map[string]*grb.Coneccion),
+		conexiones: make(map[string]*grb.Conexion),
 	}
 }
 
+
+
+func (db *Database) ListaCiudad() []*grb.Ciudad {
+	// Rellenamos una lista con los nombres de todas lo contenido en cities
+	ciudades := make([]*grb.Ciudad, len(db.ciudades))
+	i := 0
+	for _, ciudad := range db.ciudades {
+		ciudades[i] = ciudad
+		i += 1
+	}
+	return ciudades
+}
+
+
+func (db *Database) ListaConexiones() []*grb.Conexion  {
+	// Rellenamos una lista con todas lo contenido en connections
+	conexiones := make([]*grb.Conexion, len(db.conexiones))
+	i := 0
+	for _, conexion := range db.conexiones {
+		conexiones[i] = conexion
+		i += 1
+	}
+	return conexiones
+}
+
+
+func (db *Database) AgragarCiudad (ciudad *grb.Ciudad) {
+	db.ciudades[ciudad.Name] = ciudad
+}
 /*
 
 

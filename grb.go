@@ -4,7 +4,7 @@ type Ciudad struct{
 	Name string `json:"name"`
 }
 
-type Coneccion struct{
+type Conexion struct{
 	CityDesde string   `json:"from"`
 	CityHasta string   `json:"to"`
 	Costo     int      `json:"cost"`

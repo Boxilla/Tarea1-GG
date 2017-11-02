@@ -21,7 +21,19 @@ func New(database *database.Database) *Server {
 
 
 func (server *Server) ListCiudades(w http.ResponseWriter, r *http.Request) {
+	listciudades := server.database.ListaCiudad()
+	nameciudades := make([]string,len(listciudades))
 
+
+	for i, ciudad := range listciudades {
+		nameciudades[i] = ciudad.Name
+	}
+
+	data, _ := json.MarshalIndent(nameciudades, "", "  ")
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(data)
 }
 
 
@@ -30,12 +42,12 @@ func (server *Server) AddCiudades(w http.ResponseWriter, r *http.Request) {
 }
 
 
-func (server *Server) ListConecciones(w http.ResponseWriter, r *http.Request) {
+func (server *Server) ListConexiones(w http.ResponseWriter, r *http.Request) {
 
 }
 
 
-func (server *Server) AddConecciones(w http.ResponseWriter, r *http.Request) {
+func (server *Server) AddConexiones(w http.ResponseWriter, r *http.Request) {
 
 }
 
